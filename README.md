@@ -4,7 +4,7 @@ This is a small go library that supports you creating EPC standard compliant SEP
 
 ## Compatibility
 
-Currently the pkg is compliant to EPC069-12 version 3.0 from 13th September 2022. (More Information)[https://www.europeanpaymentscouncil.eu/sites/default/files/kb/file/2022-09/EPC069-12%20v3.0%20Quick%20Response%20Code%20-%20Guidelines%20to%20Enable%20the%20Data%20Capture%20for%20the%20Initiation%20of%20an%20SCT_0.pdf]
+Currently the pkg is compliant to EPC069-12 version 3.0 from 13th September 2022. [More Information](https://www.europeanpaymentscouncil.eu/sites/default/files/kb/file/2022-09/EPC069-12%20v3.0%20Quick%20Response%20Code%20-%20Guidelines%20to%20Enable%20the%20Data%20Capture%20for%20the%20Initiation%20of%20an%20SCT_0.pdf)
 
 ## Installation
 
