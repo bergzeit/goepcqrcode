@@ -11,7 +11,7 @@ Currently the pkg is compliant to EPC069-12 version 3.0 from 13th September 2022
 To install the package, use the following command:
 
 ```sh
-go get github.com/yourusername/epc-qrcode
+go get github.com/bergzeit/goepcqrcode
 ```
 
 ## Usage
