@@ -71,6 +71,32 @@ const (
 // Errors
 var ErrSepaLength error = errors.New("sepa transfer information too long")
 
+// Config represents the configuration for the SEPA information, this is the
+// static part that mostly does not change between different transfers
+type Config struct {
+	version            string
+	characterSet       string
+	identificationCode string
+	bic                string
+	name               string
+	iban               string
+	currency           string
+}
+
+// NewConfig creates a new configuration for the SEPA information. This
+// contains all the static information that often does not change between different transfers
+func NewConfig(version string, characterSet string, identificationCode string, bic string, name string, iban string, currency string) Config {
+	return Config{
+		version:            version,
+		characterSet:       characterSet,
+		identificationCode: identificationCode,
+		bic:                bic,
+		name:               name,
+		iban:               iban,
+		currency:           currency,
+	}
+}
+
 // GetRawText generates the raw text from the config and the transfer given
 func GetRawText(conf Config, transf Transfer) (string, error) {
 	raw, err := newRaw(conf, transf)
@@ -192,30 +218,4 @@ func (r *raw) render() (string, error) {
 	}
 
 	return sb.String(), nil
-}
-
-// Config represents the configuration for the SEPA information, this is the
-// static part that mostly does not change between different transfers
-type Config struct {
-	version            string
-	characterSet       string
-	identificationCode string
-	bic                string
-	name               string
-	iban               string
-	currency           string
-}
-
-// NewConfig creates a new configuration for the SEPA information. This
-// contains all the static information that often does not change between different transfers
-func NewConfig(version string, characterSet string, identificationCode string, bic string, name string, iban string, currency string) Config {
-	return Config{
-		version:            version,
-		characterSet:       characterSet,
-		identificationCode: identificationCode,
-		bic:                bic,
-		name:               name,
-		iban:               iban,
-		currency:           currency,
-	}
 }
