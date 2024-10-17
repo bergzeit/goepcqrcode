@@ -138,18 +138,18 @@ func (t *Transfer) validate() error {
 
 // raw represents the raw information for the SEPA transfer which will be rendered to text
 type raw struct {
-	serviceTag          string // required, options: ["BCD"], Service Tag
-	version             string // required, options: ["001", "002"], Version
-	characterSet        string // required, options: [1, 2, 3, 4, 5, 6, 7, 8, 9], Character set
-	identificationCode  string // required, options: ["SCT", "INST"], Identification code
-	bic                 string // required with Version 001, optional with Version 002, BIC of the receiver
-	name                string // required, name of the receiver
-	iban                string // required, IBAN of the receiver
-	amount              string // optional, format: "EUR#.##",amount to be paid
-	purpose             string // optional, options: ["BENE", "DEPT", "GDDS", "MTUP", "PENS", "SALA", "TRAD"], format ####, reason for payment
-	remittanceReference string // optional, text, 25 char, this or remittanceText, Referenz
-	remittanceText      string // optional, text, 140char, this or remittanceReference, Verwendungszweck
-	information         string // optional, text, 70 char, additional information
+	ServiceTag          string // required, options: ["BCD"], Service Tag
+	Version             string // required, options: ["001", "002"], Version
+	CharacterSet        string // required, options: [1, 2, 3, 4, 5, 6, 7, 8, 9], Character set
+	IdentificationCode  string // required, options: ["SCT", "INST"], Identification code
+	BIC                 string // required with Version 001, optional with Version 002, BIC of the receiver
+	Name                string // required, name of the receiver
+	IBAN                string // required, IBAN of the receiver
+	Amount              string // optional, format: "EUR#.##",amount to be paid
+	Purpose             string // optional, options: ["BENE", "DEPT", "GDDS", "MTUP", "PENS", "SALA", "TRAD"], format ####, reason for payment
+	RemittanceReference string // optional, text, 25 char, this or remittanceText, Referenz
+	RemittanceText      string // optional, text, 140char, this or remittanceReference, Verwendungszweck
+	Information         string // optional, text, 70 char, additional information
 }
 
 // newRaw creates a new raw instance of the SEPA information by combinding a config and transfer information
@@ -160,18 +160,18 @@ func newRaw(conf Config, transf Transfer) (raw, error) {
 	}
 
 	return raw{
-		serviceTag:          "BCD",
-		version:             conf.version,
-		characterSet:        conf.characterSet,
-		identificationCode:  conf.identificationCode,
-		bic:                 conf.bic,
-		name:                conf.name,
-		iban:                conf.iban,
-		amount:              fmt.Sprintf("%s%s", conf.currency, transf.amount),
-		purpose:             transf.purpose,
-		remittanceReference: transf.remittanceReference,
-		remittanceText:      transf.remittanceText,
-		information:         transf.information,
+		ServiceTag:          "BCD",
+		Version:             conf.version,
+		CharacterSet:        conf.characterSet,
+		IdentificationCode:  conf.identificationCode,
+		BIC:                 conf.bic,
+		Name:                conf.name,
+		IBAN:                conf.iban,
+		Amount:              fmt.Sprintf("%s%s", conf.currency, transf.amount),
+		Purpose:             transf.purpose,
+		RemittanceReference: transf.remittanceReference,
+		RemittanceText:      transf.remittanceText,
+		Information:         transf.information,
 	}, nil
 }
 
